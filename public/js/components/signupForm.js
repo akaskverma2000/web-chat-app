@@ -3,6 +3,11 @@ import { signup } from '../services/api.js';
 
 const signupForm = document.getElementById('signupForm');
 
+/**
+ * Adds an event listener to the signup form for submitting the signup information.
+ * If signup is successful, displays a success message and redirects to the login page.
+ * If signup fails, displays an error message.
+ */
 signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 

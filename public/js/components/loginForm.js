@@ -2,6 +2,11 @@ import { login } from '../services/api.js';
 
 const loginForm = document.getElementById('loginForm');
 
+/**
+ * Adds an event listener to the login form for submitting the login credentials.
+ * If login is successful, stores the JWT token in local storage and redirects to the chat page.
+ * If login fails, displays an error message.
+ */
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
