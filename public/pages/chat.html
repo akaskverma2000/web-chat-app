@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - WebSocket Chat App</title>
+  <link rel="stylesheet" href="../css/pages/chat.css">
+  <link rel="stylesheet" href="../css/utils/toast.css">
+</head>
+
+<body>
+  <header>WebSocket Chat App</header>
+
+  <div class="toast-container" id="toast"></div>
+
+  <div class="container">
+    <div class="chat-box">
+      <header>Chat</header>
+      <div class="messages" id="messages"></div>
+      <input type="text" id="messageInput" class="message-input" placeholder="Enter message">
+      <button id="sendButton" class="send-button">Send Message</button>
+    </div>
+  </div>
+
+  <script type="module" src="../js/components/chat.js"></script>
+  <script src="../js/utils/toast.js"></script>
+
+</body>
+
+</html>

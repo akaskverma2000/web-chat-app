@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - WebSocket Chat App</title>
+  <link rel="stylesheet" href="../css/pages/login.css">
+  <link rel="stylesheet" href="../css/utils/toast.css">
+</head>
+
+<body>
+  <header>Login - WebSocket Chat App</header>
+
+  <div class="toast-container" id="toast"></div>
+
+  <form id="loginForm">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <button type="submit">Login</button>
+
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+
+  </form>
+
+  <script src="../js/utils/toast.js"></script>
+  <script type="module" src="../js/components/loginForm.js"></script>
+</body>
+
+</html>
