@@ -1,5 +1,9 @@
 import { displayMessage } from '../components/displaymessage.js';
 
+/**
+ * Fetches messages from the server and displays them in the chat interface.
+ * If the user is not logged in, redirects to the login page.
+ */
 export async function fetchMessages() {
     try {
         // Retrieve JWT token from localStorage

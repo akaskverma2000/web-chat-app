@@ -1,6 +1,6 @@
 # WebSocket Server
 
-This is a WebSocket server built with Node.js and the WebSocket library. It handles WebSocket connections, incoming messages, and saves messages to a database.
+This is a WebSocket server built with Strapi and the WebSocket library. It handles WebSocket connections, incoming messages, and saves messages to a database.
 
 ## Installation
 
@@ -21,24 +21,27 @@ This is a WebSocket server built with Node.js and the WebSocket library. It hand
    Create a `.env` file in the root directory with the following variables:
 
    ```plaintext
-   PORT=3000
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=password
-   DB_NAME=mydatabase
+   HOST=127.0.0.1
+   PORT=8080
+   DATABASE_HOST=localhost
+   DATABASE_USERNAME=root
+   DATABASE_PASSWORD=password
+   DATABASE_NAME=mydatabase
+   DATABASE_PORT=3307
+   JWT_SECRET=your_secret_key
    ```
 
 4. Start the server:
 
    ```bash
-   npm start
+   npm run develop
    ```
 
 ## Usage
 
 ### Client Connection
 
-The server listens for WebSocket connections on the specified port (default is 3000). Clients can connect to the server using a WebSocket client.
+The server listens for WebSocket connections on the specified port (default is 8080). Clients can connect to the server using a WebSocket client.
 
 ### Sending Messages
 
@@ -53,10 +56,10 @@ The server saves incoming messages to a database. Make sure your database is set
 You can configure the server settings in the `.env` file. Here are the available configuration options:
 
 - `PORT`: The port on which the server should listen for WebSocket connections.
-- `DB_HOST`: The hostname of the database server.
-- `DB_USER`: The username for accessing the database.
-- `DB_PASSWORD`: The password for accessing the database.
-- `DB_NAME`: The name of the database to use.
+- `DATABASE_HOST`: The hostname of the database server.
+- `DATABASE_USER`: The username for accessing the database.
+- `DATABASE_PASSWORD`: The password for accessing the database.
+- `DATABASE_NAME`: The name of the database to use.
 
 ## Use Case
 

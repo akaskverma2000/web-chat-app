@@ -1,3 +1,12 @@
+/**
+ * Attempts to log in the user with the provided username and password.
+ * If successful, returns the user's JWT token.
+ * If unsuccessful, displays an error message.
+ *
+ * @param {string} username - The username of the user.
+ * @param {string} password - The password of the user.
+ * @returns {Promise<Object>} The response data containing the JWT token if successful.
+ */
 export async function login(username, password) {
     const response = await fetch('http://127.0.0.1:8080/auth/local', {
         method: 'POST',
@@ -12,13 +21,24 @@ export async function login(username, password) {
 
     if (!response.ok) {
         console.error('Failed to login into the web app:', response);
-        showToast('Oops! Something went wrong. Please refresh the page and try again.', false);
+        showToast('Oops! It\'s not you, it\'s us. You are just one step away from logging into the web chat.', false);
         return;
     }
 
     return await response.json();
 }
 
+/**
+ * Attempts to sign up a new user with the provided username, email, and password.
+ * If successful, returns the response data.
+ * If unsuccessful, throws an error with the error message from the server.
+ *
+ * @param {string} username - The username of the new user.
+ * @param {string} email - The email of the new user.
+ * @param {string} password - The password of the new user.
+ * @returns {Promise<Object>} The response data if successful.
+ * @throws {Error} If signup fails, throws an error with the error message.
+ */
 export async function signup(username, email, password) {
     const response = await fetch('http://127.0.0.1:8080/auth/local/register', {
         method: 'POST',
@@ -34,7 +54,7 @@ export async function signup(username, email, password) {
 
     if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message || 'Failed to signup');
+        showToast('We\'re almost there! Just one more try, please?', false);
     }
 
     return await response.json();
