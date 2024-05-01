@@ -57,6 +57,8 @@ The server saves incoming messages to a database. Ensure that your database is s
 
 ## Database Diagram
 
+![Web Chat DB Schema](https://github.com/akaskverma2000/web-chat-app/assets/63094947/2ee9a4cb-ed03-43d2-9e2a-48c0018eb411)
+
 Schema Link: [Link](https://dbdiagram.io/d/Web-Chat-DB-Schema-663286705b24a634d0448391)
 
 ## Configuration
