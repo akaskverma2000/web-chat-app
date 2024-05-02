@@ -21,6 +21,7 @@ function initWebSocketServer(port, handleConnection, handleMessage) {
 
   wss.on('error', (error) => {
     logger.error(`WebSocket server error: ${error.message}`);
+    throw new Error('Oops! Something went wrong with the WebSocket server.');
   });
 }
 

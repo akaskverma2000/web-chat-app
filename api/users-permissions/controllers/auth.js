@@ -1,6 +1,11 @@
 'use strict';
 
 module.exports = {
+    /**
+     * Controller method to handle user login
+     * @param {Object} ctx - The Koa context object
+     * @returns {Object} - Returns JWT token and user information on successful login
+     */
     async login(ctx) {
         const { identifier, password } = ctx.request.body;
 
@@ -34,6 +39,11 @@ module.exports = {
         };
     },
 
+    /**
+     * Controller method to handle user registration
+     * @param {Object} ctx - The Koa context object
+     * @returns {Object} - Returns JWT token and user information on successful registration
+     */
     async register(ctx) {
         const { username, email, password } = ctx.request.body;
 

@@ -1,12 +1,13 @@
 const logger = require('../../../logger/logger');
 const Message = require('../../../models/Message');
-const jwt = require('jsonwebtoken'); // Import jsonwebtoken package
+const jwt = require('jsonwebtoken');
 
+/** Controller method to find messages for a logged-in user */
 module.exports = {
     async find(ctx) {
         const { user } = ctx.state;
         if (!user) {
-            return ctx.unauthorized('You are not logged in');
+            return ctx.unauthorized('Hey there, looks like you forgot to log in!');
         }
         try {
             // Fetch messages based on the user_id
@@ -23,8 +24,7 @@ module.exports = {
             }));
         } catch (error) {
             ctx.response.status = 500;
-            logger.info(`message ${error}`);
-            ctx.response.body = { error: 'An internal server error occurred' };
+            ctx.response.body = { error: 'Oops, something went wrong on our end. Please try again later!' };
         }
     }
 };
