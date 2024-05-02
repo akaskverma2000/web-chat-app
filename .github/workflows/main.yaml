@@ -38,6 +38,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build-artifacts
+      
+      - name: List files in root directory
+        run: ls -la
 
       - name: Build Docker image
         run: docker build -t akashverm12/webchatapp .
