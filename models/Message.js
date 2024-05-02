@@ -15,6 +15,14 @@ const Message = sequelize.define('Message', {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
+  user_id: {
+    type: DataTypes.INTEGER.UNSIGNED,
+    allowNull: false,
+    references: {
+      model: 'users-permissions_user',
+      key: 'id',
+    }
+  }
 });
 
 module.exports = Message;

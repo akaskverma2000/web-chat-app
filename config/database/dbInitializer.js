@@ -17,6 +17,4 @@ async function initDatabase() {
   }
 }
 
-initDatabase();
-
-module.exports = { Message };
+module.exports = { Message, initDatabase };

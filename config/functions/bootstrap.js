@@ -1,6 +1,7 @@
 const { handleConnection } = require('../../api/websocket/controllers/connectionHandler');
 const { initWebSocketServer } = require('../../api/websocket/controllers/websocketServer');
 const { handleMessage } = require('../../api/websocket/controllers/messageHandler');
+const { initDatabase } = require('../../config/database/dbInitializer');
 const logger = require('../../logger/logger');
 
 /**
@@ -13,6 +14,8 @@ module.exports = async () => {
 
     // Start the WebSocket server
     initWebSocketServer(port, handleConnection, handleMessage);
+
+    initDatabase();
   } catch (err) {
     // Log any errors that occur during initialization
     logger.error('Error initializing WebSocket server:', err);
