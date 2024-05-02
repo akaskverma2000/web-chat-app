@@ -20,8 +20,9 @@ export async function login(username, password) {
     });
 
     if (!response.ok) {
-        console.error('Failed to login into the web app:', response);
-        showToast('Oops! It\'s not you, it\'s us. You are just one step away from logging into the web chat.', false);
+        const errorData = await response.json();
+        showToast(errorData.message, false);
+        console.error('Failed to login into the web app:', errorData);
         return;
     }
 
@@ -53,8 +54,10 @@ export async function signup(username, email, password) {
     });
 
     if (!response.ok) {
-        const data = await response.json();
-        showToast('We\'re almost there! Just one more try, please?', false);
+        const errorData = await response.json();
+        showToast(errorData.message, false);
+        console.error('Failed to login into the web app:', errorData);
+        return;
     }
 
     return await response.json();

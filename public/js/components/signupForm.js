@@ -18,10 +18,12 @@ signupForm.addEventListener('submit', async (e) => {
     try {
         const data = await signup(username, email, password);
 
-        showToast('Congratulations! Your signup was successful. Please proceed to login!', true);
+        if (data) {
+            showToast('Congratulations! Your signup was successful. Please proceed to login!', true);
 
-        // Redirect to login page
-        window.location.href = 'http://127.0.0.1:8080/pages/login.html';
+            // Redirect to login page
+            window.location.href = 'http://127.0.0.1:8080/pages/login.html';
+        }
     } catch (error) {
         showToast('An error occurred while signing up. Please try again.', false);
     }
