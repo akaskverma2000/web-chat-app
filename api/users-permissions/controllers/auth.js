@@ -70,6 +70,9 @@ module.exports = {
             username,
             email,
             password,
+            role: 1,
+            confirmed: true, // Set confirmed to true for newly registered users
+            provider: 'local', // Set provider to 'local' for locally registered users
         });
 
         // Generate JWT token
