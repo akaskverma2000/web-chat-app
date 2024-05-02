@@ -22,7 +22,7 @@ async function handleMessage(ws, message) {
   } catch (error) {
     logger.error(`Error handling message: ${error.message}`);
     // Notify the client about the error
-    throw new Error('Failed to handle message');
+    throw new Error('Oops! Something went wrong while handling your message. Please try again.');
   }
 }
 
@@ -36,7 +36,7 @@ function handleClose(ws) {
     logger.info('Client disconnected');
   } catch (error) {
     logger.error(`Error handling close event: ${error.message}`);
-    // You may choose to handle the error in a specific way or just log it
+    throw new Error('Oops! Something went wrong while handling the close event.');
   }
 }
 

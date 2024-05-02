@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/server/sequelize');
 
+/** Define the Message model for storing chat messages */
 const Message = sequelize.define('Message', {
   id: {
     type: DataTypes.INTEGER,

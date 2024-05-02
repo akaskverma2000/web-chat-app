@@ -2,12 +2,13 @@
 
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
+/** Middleware for verifying JWT tokens in the Authorization header */
 module.exports = async (ctx, next) => {
   // Retrieve authorization header
   const { authorization } = ctx.request.headers;
 
   if (!authorization) {
-    return ctx.unauthorized('You must provide a valid JWT in the Authorization header');
+    return ctx.unauthorized('Hold on, you forgot to bring your secret JWT in the Authorization header!');
   }
 
   // Extract JWT token
@@ -22,6 +23,6 @@ module.exports = async (ctx, next) => {
 
     return await next();
   } catch (err) {
-    return ctx.badRequest('Invalid token');
+    return ctx.badRequest('Uh oh, it seems like your token is not quite right. Please log in again!');
   }
 };
