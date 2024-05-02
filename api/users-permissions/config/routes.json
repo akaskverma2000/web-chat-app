@@ -1,0 +1,20 @@
+{
+    "routes": [
+        {
+            "method": "POST",
+            "path": "/auth/local",
+            "handler": "auth.login",
+            "config": {
+                "policies": []
+            }
+        },
+        {
+            "method": "POST",
+            "path": "/auth/local/register",
+            "handler": "auth.register",
+            "config": {
+                "policies": []
+            }
+        }
+    ]
+}
