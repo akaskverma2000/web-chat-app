@@ -11,16 +11,18 @@ async function handleMessage(ws, message) {
   logger.info(`Received message: ${message}`);
 
   try {
+    const { userId, content } = JSON.parse(message);
+
     // Save the message to the database
-    const savedMessage = await Message.create({ content: message });
+    const savedMessage = await Message.create({ content: content, user_id: userId });
     logger.info(`Message saved to database: ${JSON.stringify(savedMessage)}`);
 
     // Echo the received message back to the client
-    ws.send(message);
+    ws.send(content);
   } catch (error) {
     logger.error(`Error handling message: ${error.message}`);
     // Notify the client about the error
-    ws.send(JSON.stringify({ error: 'Failed to handle message' }));
+    throw new Error('Failed to handle message');
   }
 }
 

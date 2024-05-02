@@ -18,6 +18,7 @@ loginForm.addEventListener('submit', async (e) => {
 
         if (data.jwt) {
             localStorage.setItem('token', data.jwt);
+            localStorage.setItem('userId', data.user.id);
             showToast('Great job! You have successfully logged into the web chat app.Welcome aboard!', true);
             window.location.href = 'http://127.0.0.1:8080/pages/chat.html';
         } else {

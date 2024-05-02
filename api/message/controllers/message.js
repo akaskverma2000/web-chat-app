@@ -9,7 +9,12 @@ module.exports = {
             return ctx.unauthorized('You are not logged in');
         }
         try {
-            const messages = await Message.findAll();
+            // Fetch messages based on the user_id
+            const messages = await Message.findAll({
+                where: {
+                    user_id: user.id
+                }
+            });
 
             ctx.response.body = messages.map(message => ({
                 id: message.id,
