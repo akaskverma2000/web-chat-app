@@ -1,4 +1,4 @@
-name: Build on Push
+name: Build and Deploy to Docker Hub
 
 on:
   push:
@@ -39,6 +39,14 @@ jobs:
         with:
           name: build-artifacts
 
-      - name: Deploy to server
-        run: |
-          # Add your deployment commands here
+      - name: Build Docker image
+        run: docker build -t akashverm12/webchatapp .
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image
+        run: docker push akashverm12/webchatapp
