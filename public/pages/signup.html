@@ -17,13 +17,24 @@
 
   <form id="signupForm">
     <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
+    <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9_]{3,}">
+    <small>Alphanumeric characters and underscores only (min. 3 characters)</small><br><br>
+
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="emailConfirm">Confirm Email:</label><br>
+    <input type="email" id="emailConfirm" name="emailConfirm" required><br>
+
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br><br>
+    <input type="password" id="password" name="password" required minlength="8"><br>
+
+    <label for="passwordConfirm">Confirm Password:</label><br>
+    <input type="password" id="passwordConfirm" name="passwordConfirm" required><br>
+
     <button type="submit">Signup</button>
   </form>
+
 
   <script src="../js/utils/toast.js"></script>
   <script type="module" src="../js/components/signupForm.js"></script>

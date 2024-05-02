@@ -1,4 +1,5 @@
 import { login } from '../services/api.js';
+import { validateLoginForm } from '../utils/formValidation.js';
 
 const loginForm = document.getElementById('loginForm');
 
@@ -9,6 +10,10 @@ const loginForm = document.getElementById('loginForm');
  */
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (!validateLoginForm()) {
+        return;
+    }
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;

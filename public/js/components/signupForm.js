@@ -1,5 +1,5 @@
-// signupForm.js
 import { signup } from '../services/api.js';
+import { validateSignupForm } from '../utils/formValidation.js';
 
 const signupForm = document.getElementById('signupForm');
 
@@ -10,6 +10,10 @@ const signupForm = document.getElementById('signupForm');
  */
 signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (!validateSignupForm()) {
+        return;
+    }
 
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
