@@ -1,29 +1,22 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/server/sequelize');
+const mongoose = require('mongoose');
 
-/** Define the Message model for storing chat messages */
-const Message = sequelize.define('Message', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
+/** Define the Message schema for storing chat messages */
+const messageSchema = new mongoose.Schema({
   content: {
-    type: DataTypes.TEXT,
-    allowNull: false,
+    type: String,
+    required: true,
   },
   timestamp: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+    type: Date,
+    default: Date.now,
   },
   user_id: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    allowNull: false,
-    references: {
-      model: 'users-permissions_user',
-      key: 'id',
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
   }
 });
+
+const Message = mongoose.model('Message', messageSchema);
 
 module.exports = Message;

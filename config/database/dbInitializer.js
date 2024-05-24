@@ -1,15 +1,20 @@
-const sequelize = require('../server/sequelize');
+const mongoose = require('mongoose');
 const logger = require('../../logger/logger');
-const Message = require('../../models/Message');
+const Message = require('../../models/Message'); // Ensure this model is defined using Mongoose
 
-/***
- * Initializes the database connection and synchronizes models with the database.
+/**
+ * Initializes the database connection.
  * Throws an error if unable to connect to the database.
  */
 async function initDatabase() {
+  const dbUri = process.env.DATABASE_URI;
+
   try {
-    await sequelize.authenticate();
-    await sequelize.sync(); // Sync all defined models with the database
+    // Connect to MongoDB using Mongoose
+    await mongoose.connect(dbUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     logger.info('Database connection has been established successfully.');
   } catch (error) {
     // Throw the error to be caught and handled by the calling code
