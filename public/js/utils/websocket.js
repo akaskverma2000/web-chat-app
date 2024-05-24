@@ -1,4 +1,4 @@
-const ws = new WebSocket('ws://localhost:8080');
+const ws = new WebSocket('ws://web-chat-app-nu.vercel.app:8080');
 
 /**
  * Logs a message to the console when the WebSocket connection is established.

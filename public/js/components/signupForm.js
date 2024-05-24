@@ -26,7 +26,7 @@ signupForm.addEventListener('submit', async (e) => {
             showToast('Congratulations! Your signup was successful. Please proceed to login!', true);
 
             // Redirect to login page
-            window.location.href = 'http://127.0.0.1:8080/pages/login.html';
+            window.location.href = 'https://web-chat-app-nu.vercel.app/pages/login.html';
         }
     } catch (error) {
         showToast('An error occurred while signing up. Please try again.', false);

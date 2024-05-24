@@ -8,7 +8,7 @@
  * @returns {Promise<Object>} The response data containing the JWT token if successful.
  */
 export async function login(username, password) {
-    const response = await fetch('http://127.0.0.1:8080/auth/local', {
+    const response = await fetch('https://web-chat-app-nu.vercel.app/auth/local', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ export async function login(username, password) {
  * @throws {Error} If signup fails, throws an error with the error message.
  */
 export async function signup(username, email, password) {
-    const response = await fetch('http://127.0.0.1:8080/auth/local/register', {
+    const response = await fetch('https://web-chat-app-nu.vercel.app/auth/local/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
