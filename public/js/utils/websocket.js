@@ -1,4 +1,4 @@
-const ws = new WebSocket('ws://web-chat-app-nu.vercel.app');
+const ws = new WebSocket('wss://web-chat-app-nu.vercel.app/');
 
 /**
  * Logs a message to the console when the WebSocket connection is established.
