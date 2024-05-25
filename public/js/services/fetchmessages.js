@@ -16,7 +16,7 @@ export async function fetchMessages() {
             return;
         }
 
-        const response = await fetch('https://web-chat-app-production.up.railway.app/messages', {
+        const response = await fetch('http://127.0.0.1:8080/messages', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

@@ -11,19 +11,18 @@ module.exports = {
         }
         try {
             // Fetch messages based on the user_id
-            const messages = await Message.findAll({
-                where: {
-                    user_id: user.id
-                }
+            const messages = await Message.find({
+                user_id: user.id
             });
 
             ctx.response.body = messages.map(message => ({
-                id: message.id,
+                id: message._id,
                 content: message.content,
                 timestamp: message.timestamp,
             }));
         } catch (error) {
             ctx.response.status = 500;
+            logger.error('Error retrieving messages', error);
             ctx.response.body = { error: 'Oops, something went wrong on our end. Please try again later!' };
         }
     }

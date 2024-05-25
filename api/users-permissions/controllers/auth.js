@@ -65,11 +65,11 @@ module.exports = {
             return ctx.badRequest('Oops! This email address is already taken. Please choose a different email address.');
         }
 
-        // Fetch the ObjectId for the default role (usually 'authenticated')
-        const defaultRole = await strapi.query('role', 'users-permissions').findOne({ type: 'authenticated' });
+        // Fetch the default role
+        const defaultRole = await strapi.query('role', 'users-permissions').findOne({ type: 'public' });
 
         if (!defaultRole) {
-            return ctx.badRequest('Oops! The default role could not be found.');
+            return ctx.badRequest('Oops! Default role not found. Please contact support.');
         }
 
         // Create a new user
@@ -77,7 +77,7 @@ module.exports = {
             username,
             email,
             password,
-            role: defaultRole.id,
+            role: defaultRole.id,  // Use the ObjectId of the default role
             confirmed: true, // Set confirmed to true for newly registered users
             provider: 'local', // Set provider to 'local' for locally registered users
         });
