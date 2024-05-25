@@ -10,7 +10,7 @@ const logger = require('../../logger/logger');
  */
 module.exports = async () => {
   try {
-    const port = process.env.PORT;
+    const port = process.env.WEBSOCKET_PORT;
 
     // Start the WebSocket server
     initWebSocketServer(port, handleConnection, handleMessage);
