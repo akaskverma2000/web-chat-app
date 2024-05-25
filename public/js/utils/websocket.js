@@ -1,4 +1,4 @@
-const ws = new WebSocket('ws://web-chat-app.railway.internal/');
+const ws = new WebSocket('wss://web-chat-app-production.up.railway.app/');
 
 /**
  * Logs a message to the console when the WebSocket connection is established.
