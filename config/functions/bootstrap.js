@@ -1,3 +1,6 @@
+const http = require('http');
+const Koa = require('koa');
+const app = new Koa();
 const { handleConnection } = require('../../api/websocket/controllers/connectionHandler');
 const { initWebSocketServer } = require('../../api/websocket/controllers/websocketServer');
 const { handleMessage } = require('../../api/websocket/controllers/messageHandler');
@@ -10,15 +13,24 @@ const logger = require('../../logger/logger');
  */
 module.exports = async () => {
   try {
-    const port = process.env.WEBSOCKET_PORT;
+    const port = process.env.PORT;
+
+    // Create the HTTP server
+    const server = http.createServer(app.callback());
 
     // Start the WebSocket server
-    initWebSocketServer(port, handleConnection, handleMessage);
+    initWebSocketServer(server, handleConnection, handleMessage);
 
+    // Start the HTTP server
+    server.listen(port, () => {
+      logger.info(`HTTP server started on port ${port}`);
+    });
+
+    // Initialize the database
     initDatabase();
   } catch (err) {
     // Log any errors that occur during initialization
-    logger.error('Error initializing WebSocket server:', err);
+    logger.error('Error initializing server:', err);
     // Optionally, rethrow the error to stop the Strapi server startup
     throw err;
   }
