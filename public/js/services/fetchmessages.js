@@ -12,11 +12,11 @@ export async function fetchMessages() {
         // Check if token is available
         if (!token) {
             showToast('Oops! Looks like you need to log in before accessing the chat. Please log in to continue.', false);
-            window.location.href = 'https://web-chat-app-nu.vercel.app/pages/login.html';
+            window.location.href = window.location.origin + '/pages/login.html';
             return;
         }
 
-        const response = await fetch('https://web-chat-app-nu.vercel.app/messages', {
+        const response = await fetch('https://web-chat-app-production.up.railway.app/messages', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -26,7 +26,7 @@ export async function fetchMessages() {
 
         if (!response.ok) {
             if (response.status === 401) {
-                window.location.href = 'https://web-chat-app-nu.vercel.app/pages/login.html';
+                window.location.href = window.location.origin + '/pages/login.html';
                 showToast('Oops! Looks like you need to log in before accessing the chat. Please log in to continue.', false);
                 return;
             }

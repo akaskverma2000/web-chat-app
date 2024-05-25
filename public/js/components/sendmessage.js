@@ -13,7 +13,7 @@ export default function sendMessage() {
         const userId = localStorage.getItem('userId');
 
         if (!userId) {
-            window.location.href = 'https://web-chat-app-nu.vercel.app/pages/login.html';
+            window.location.href = window.location.origin + '/pages/login.html';
             showToast('Oops! Looks like you need to log in before accessing the chat. Please log in to continue.', false);
             return;
         }

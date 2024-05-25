@@ -25,7 +25,7 @@ loginForm.addEventListener('submit', async (e) => {
             localStorage.setItem('token', data.jwt);
             localStorage.setItem('userId', data.user.id);
             showToast('Great job! You have successfully logged into the web chat app.Welcome aboard!', true);
-            window.location.href = 'https://web-chat-app-nu.vercel.app/pages/chat.html';
+            window.location.href = window.location.origin + '/pages/chat.html';
         }
     } catch (error) {
         showToast('Oops! It looks like we are having trouble connecting to the server. Please check your internet connection and try again', false);
